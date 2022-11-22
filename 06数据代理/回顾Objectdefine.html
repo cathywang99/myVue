@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>回顾Object.defineproperty方法</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let person={
+            name:'张三',
+            sex:"男",
+        }
+        //此种方法添加的是不可枚举的属性
+        Object.defineProperty(person,"age",{
+            age:18,
+            enumerable:true,//此控制属性是否可以枚举，默认是false
+            writable:true,//控制属性是否可以被修改，默认值是false
+            configurable:true//控制属性是否可以被删除，默认值是false
+        })
+        console.log(person);
+    </script>
+</body>
+</html>

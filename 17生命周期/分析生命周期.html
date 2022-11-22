@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>神功周期</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root" :x="n">
+        <h2>当前的n值是:{{n}}</h2>
+        <button @click="add">点我n+1</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#root",
+        data: {
+            n:1, 
+            opacity: 0.5,//透明度
+        },
+        methods: {
+            add(){
+                this.n++;
+            }
+        },
+        //vue完成模板的解析并把真实DOM元素放入页面后（挂载完毕），调用mounted
+        mounted() {
+            setInterval(() => {
+                this.opacity -= 0.005;
+                if (this.opacity <= 0) this.opacity = 1;
+            }, 16);
+        },
+        beforeCreate(){
+
+        },
+        created(){
+            //debugger;
+        },
+        beforeMount(){
+
+        },
+
+
+    })
+
+</script>
+
+
+</html>

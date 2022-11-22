@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 起始标签和结束标签之间的是标签体，标签体使用插值语法 -->
+        <h1>插值语法</h1>
+        <h3>你好,{{name}}</h3>
+        <hr />
+        <h1>指令语法</h1>
+        <a v-bind:href="school.url.toUpperCase()" x="hello">点我去{{school.name}}学习1</a>
+        <a :href="school.url" x="hello">点我去{{school.name}}学习1</a>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#root",
+        data: {
+            name: "jack",
+            school:{
+                name:"尚硅谷",
+                url: 'http://www.atguigu.com',
+            }
+
+        }
+    })
+</script>
+
+</html>

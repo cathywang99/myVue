@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>重要关系</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <school></school>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const school=Vue.extend({
+        name:"school",
+        template:`
+        <div>
+            <h2>学校名称：{{schoolName}}</h2>
+        <h2>学校地址：{{address}}</h2>
+        <button @click="showName">点我提示学校名字</button>
+        </div>`,
+        data(){
+            return {
+                schoolName:'尚硅谷',
+                address:"北京"
+            }
+        },
+        methods:{
+            //方法通过数据代理放到VC的实例对象上了
+            showName(){
+                alert(this.schoolName);//this是vueComponent的实例
+            }
+        }
+    })
+    
+    new Vue({
+        el:'#root',
+        //注册组件（局部）
+        components:{school}
+    })
+
+</script>
+</html>

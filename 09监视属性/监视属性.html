@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">天气案例监视属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#root",
+
+        data: {
+            isHot: true,
+            numbers: {
+                a:1,
+                b:1
+            },
+        },
+        computed: {
+            info() {
+                return this.isHot ? '炎热' : '凉爽'
+            }
+        },
+        methods: {
+            changeWeather() {
+                console.log("---------");
+                this.isHot = !this.isHot;
+            }
+        },
+        watch: {
+            isHot: {
+                immediate: true,//初始化的时候让handler调用一下
+                //handler什么时候调用？当isHot发生改变时
+                handler(newValue, oldValue) {
+
+                }
+            },
+            //监视多级结构中所有属性的变化
+            numbers: {
+                deep: true,
+                handler() {
+                    console.log("numbers改变了");
+                }
+            }
+        }
+    })
+
+    vm.$watch('isHot', {
+
+    });
+</script>
+
+</html>

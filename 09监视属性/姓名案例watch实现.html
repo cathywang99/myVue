@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>姓名案例watch实现</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 起始标签和结束标签之间的是标签体，标签体使用插值语法 -->
+        姓：<input type="text" v-model:value="firstName"><br>
+        名：<input type="text" v-model:value="lastName"><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            firstName: "张",
+            lastName: "三",
+            fullName:"张-三"
+        },
+        watch:{
+            firstName(newValue){
+                this.fullName=newValue+"--"+this.lastName;
+            },
+            lastName(newValue){
+                this.fullName=this.firstName+'--'+newValue;
+            }
+        }
+    })
+</script>
+
+</html>
